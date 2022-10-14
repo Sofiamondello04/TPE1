@@ -11,7 +11,7 @@ if (!empty($_GET['action'])) { // Si la URL no esta vacia, por defecto muestra h
     $action = $_GET['action'];
 }
 else {
-    $action = 'home'; // acción por defecto os
+    $action = 'productos'; // acción por defecto os
 }
 
 // parsea la accion 
@@ -21,9 +21,25 @@ $params = explode('/', $action);
 // tabla de ruteo--> Determino que camino a seguir en cada accion
 switch ($params[0]) {
 
-	case 'home':
+	case 'productos':
 		$productController = new ProductController();
 		$productController->showProducts();	//OK
+		break;
+
+	case 'goAddProduct':
+		$productController = new ProductController();
+		$productController->goAddProduct();
+		break;
+
+	case 'addProduct':
+		$productController = new ProductController();
+		$productController->addProduct();
+		break;
+
+	case 'marcas':
+		$productController = new ProductController();
+		$id_marca = $params[1];
+		$productController->filterProducts($id_marca); //trae los productos de esa marca
 		break;
 
 
@@ -63,11 +79,16 @@ switch ($params[0]) {
 
 
 
-       
+	case 'goAddBrand':
+		$brandController = new BrandController();
+		$brandController->goAddBrand();
+		break;
+		
 	case 'addBrand':
 		$brandController = new BrandController();
 		$brandController->addBrand();
 		break;
+
 	case 'deleteBrand':
 		$brandController = new BrandController();
 		// obtengo el parametro de la acción

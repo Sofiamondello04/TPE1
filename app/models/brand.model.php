@@ -22,7 +22,7 @@ class BrandModel {
    
     public function insertBrand($nombre) {
         $query = $this->db->prepare("INSERT INTO marca (nombre_marca) VALUES (?)");
-        $query->execute([$nombre_marca]);
+        $query->execute([$nombre]);
 
         return $this->db->lastInsertId();
     }

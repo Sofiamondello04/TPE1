@@ -42,6 +42,14 @@ class ProductModel {
         return $product;
     }
 
+    function getProductsOfBrand($id_marca) {
+        $query= $this->db->prepare("SELECT * FROM producto INNER JOIN marca ON producto.id_marca = marca.id_m WHERE id_marca= ?");
+        $query-> execute([$id_marca]);
+        $products= $query->fetchAll(PDO::FETCH_OBJ);
+        return $products;
+
+    }
+
     public function updateP($productoE) { 
         echo "entre a la db";
         $query = $this->db->prepare('UPDATE producto SET nombre= ?, talle= ?, precio= ?,  id_marca= ? WHERE id = ?'); 

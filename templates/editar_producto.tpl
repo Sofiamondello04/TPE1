@@ -9,13 +9,13 @@
             <div class="form-group">
                 <label>Nombre</label>
                
-                <input name="nombreE" type="text" class="form-control">
+                <input name="nombreE" type="text" class="form-control" value="{$producto->nombre}">
             </div>
         </div>
         <div class="col-3">
             <div class="form-group">
                 <label>Marca</label>
-                <select name="id_marcaE" class="form-control" >
+                <select name="id_marcaE" class="form-control" value="{$producto->nombre_marca}">
                     {foreach from=$marcas item=$marca}
                         <option value="{$marca->id_m}">{$marca->nombre_marca}</option>
                     {/foreach}
@@ -28,12 +28,12 @@
 
     <div class="form-group">
         <label>Precio</label>
-        <input name="precioE" type="number" class="form-control">
+        <input name="precioE" type="number" class="form-control" value="{$producto->precio}">
     </div>
 
     <div class="form-group">
         <label>Talle</label>
-        <input name="talleE" type="text" class="form-control">
+        <input name="talleE" type="text" class="form-control" value="{$producto->talle}">
     </div>
 <input type="submit" class="btn btn-primary" value="Editar">
     

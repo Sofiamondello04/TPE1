@@ -20,9 +20,38 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="home">Home</a>
-                    </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Productos
+                    </a>
+                      <ul class="dropdown-menu">
+                      
+                      <li><a class="dropdown-item" href="productos">Mostrar productos</a></li>
+                      {if isset($smarty.session.USER_ID)}
+                      <li><a class="dropdown-item" href="goAddProduct">Agregar producto</a></li>
+                      {/if}
+                  </ul>
+
+
+                  </li>
+
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Marcas
+                      </a>
+                
+                      <ul class="dropdown-menu">
+                      {foreach from=$marcas item=$marca}
+                        <li><a class="dropdown-item" href="marcas/{$marca->id_m}">{$marca->nombre_marca}</a></li>
+                      {/foreach} 
+                      {if isset($smarty.session.USER_ID)}
+                        <li><hr class="dropdown-divider"></li>
+                        
+                        <li><a class="dropdown-item" href="goAddBrand">Agregar marca</a></li>
+                        {/if}
+                      </ul>
+                    </li>  
                     {if !isset($smarty.session.USER_ID)}
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="login">Login</a>
@@ -31,7 +60,8 @@
                         <li class="nav-item ml-auto">
                             <a class="nav-link" aria-current="page" href="logout">Logout ({$smarty.session.USER_EMAIL})</a>
                         </li>
-                    {/if}   
+                    {/if} 
+                    
                 </ul>
               </div>
             </div>

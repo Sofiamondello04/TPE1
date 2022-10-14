@@ -8,6 +8,8 @@ class ProductController {
     private $model; //base de datos
     private $view; // template
     private $modelBrands;
+    private $products;
+    private $brands;
     
 
     public function __construct() {
@@ -15,24 +17,34 @@ class ProductController {
         $this->view = new ProductView();
         $this->authHelper = new AuthHelper ();
         $this->modelBrands = new BrandModel();
-        //barrera de seguridad
-        
-    
+        $this->products = $this->model->getAllProducts();
+        $this->brands = $this->modelBrands->getAllBrands(); /// ver para modificar codigo abajo
     }
 
     public function showProducts() { //muestra los productos a los usuarios comunes  OK
         session_start();
+
         $productos = $this->model->getAllProducts();
+        $this->view->assign($this->products, $this->brands);
+        
         $this->view->showProducts($productos);
     }
 
+    function goAddProduct() {
+        session_start();
+        $marcas= $this->modelBrands->getAllBrands();
+        $this->view->showFormAddProduct($marcas);
+    }
 
 
-    /*function showAddProduct() { // muestra formulario para crear un producto
-        $marcas = $this->modelBrands->getAllBrands();
-        $productos = $this->model->getAllProducts(); 
-        $this->view->showAddProduct($marcas, $productos);
-    }*/
+    function filterProducts($id_marca){
+        session_start();
+        $this->view->assign($this->products, $this->brands);
+        $productosMarca = $this->model->getProductsOfBrand($id_marca);
+        $this->view-> showProductsOfBrand($productosMarca);
+        
+  
+    }
 
     function addProduct() { 
         // TODO: validar entrada de datos

@@ -15,14 +15,24 @@ class ProductView {
        
     }
 
-   
-
-   /* function showAddProduct($marcas, $productos) {
-        $this->smarty->assign('titulo', 'Agregar producto');
-        $this->smarty->assign('marcas', $marcas);
+    function assign($productos, $marcas) {
         $this->smarty->assign('productos', $productos);
+        $this->smarty->assign('marcas', $marcas); 
+    }
+
+    function showProductsOfBrand($productosMarca) {
+    
+       $this->smarty->assign('count', count($productosMarca)); 
+       $this->smarty->assign('productosMarca', $productosMarca);
+       $this->smarty->display('marcas_list.tpl');
+
+    }
+
+    function showFormAddProduct($marcas) {
+        $this->smarty->assign('titulo', 'Agregar producto');
         $this->smarty->display('agregar_producto.tpl');
-    }*/
+    }
+    
 
     function showFormEdit($id, $producto, $marcas) {
         $this->smarty->assign('titulo', 'Editar producto');

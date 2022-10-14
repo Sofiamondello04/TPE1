@@ -4,6 +4,7 @@ require_once './libs-smarty/libs/Smarty.class.php';
 
 class AuthView {
     private $smarty;
+    
 
     public function __construct(){
         $this->smarty = new Smarty();
@@ -12,5 +13,10 @@ class AuthView {
     function showFormLogin($error = null) {
         $this->smarty->assign("error", $error);
         $this->smarty->display('formLogin.tpl');
+    }
+
+    function assign($productos, $marcas) {
+        $this->smarty->assign('productos', $productos);
+        $this->smarty->assign('marcas', $marcas); 
     }
 }

@@ -17,12 +17,17 @@ class BrandController {
     }
 
     
+    function goAddBrand() {
+        session_start();
+        $this->view->showFormAddBrand();
+    }
+   
     function addBrand() {
-        // TODO: validar entrada de datos
+        session_start();
 
         $nombre_marca = $_POST['nombre_marca'];
-        $id = $this->model->insertBrand($nombre_marca);
-
+        $this->model->insertBrand($nombre_marca);
+        
         header("Location: " . BASE_URL); // VEEEER
     }
    
