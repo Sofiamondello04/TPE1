@@ -30,6 +30,7 @@ class ProductView {
 
     function showFormAddProduct($marcas) {
         $this->smarty->assign('titulo', 'Agregar producto');
+        $this->smarty->assign('marcas', $marcas);
         $this->smarty->display('agregar_producto.tpl');
     }
     

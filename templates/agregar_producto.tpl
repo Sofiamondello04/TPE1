@@ -17,7 +17,7 @@
                 <label>Marca</label>
                 <select name="id_marca" class="form-control">
                     {foreach from=$marcas item=$marca}
-                        <option value="{$producto->id_marca}">{$marca->nombre_marca}</option>
+                        <option value="{$marca->id_m}">{$marca->nombre_marca}</option>
                     {/foreach}
                 </select>
             </div>

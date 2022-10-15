@@ -14,7 +14,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="home">Pototito</a>
+              <a class="navbar-brand" href="">Pototito</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -43,11 +43,11 @@
                 
                       <ul class="dropdown-menu">
                       {foreach from=$marcas item=$marca}
-                        <li><a class="dropdown-item" href="marcas/{$marca->id_m}">{$marca->nombre_marca}</a></li>
+                        <li><a class="dropdown-item" href="marca/{$marca->id_m}">{$marca->nombre_marca}</a></li>
                       {/foreach} 
                       {if isset($smarty.session.USER_ID)}
                         <li><hr class="dropdown-divider"></li>
-                        
+                        <li><a class="dropdown-item" href="marcas">Mostrar marcas</a></li>
                         <li><a class="dropdown-item" href="goAddBrand">Agregar marca</a></li>
                         {/if}
                       </ul>

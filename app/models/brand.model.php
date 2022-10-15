@@ -31,12 +31,12 @@ class BrandModel {
     // Elimina una marca de la tabla segun su id.
     
     function deleteBrandById($id) {
-        $query = $this->db->prepare('DELETE FROM marca WHERE id = ?');
+        $query = $this->db->prepare('DELETE FROM marca WHERE id_m = ?');
         $query->execute([$id]);
     }
 
     function getBrand($id) {
-        $query= $this->db->prepare("SELECT * FROM marca WHERE id= ?");
+        $query= $this->db->prepare("SELECT * FROM marca WHERE id_m= ?");
         $query-> execute([$id]);
         $marca= $query->fetch(PDO::FETCH_OBJ);
         return $marca;
@@ -44,7 +44,7 @@ class BrandModel {
 
     public function updateB($marcaE) { 
        
-        $query = $this->db->prepare('UPDATE marca SET nombre_marca= ? WHERE id = ?'); 
+        $query = $this->db->prepare('UPDATE marca SET nombre_marca= ? WHERE id_m = ?'); 
         $query->execute([$marcaE->nombre_marcaE, $marcaE->id]);
  
     }

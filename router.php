@@ -37,6 +37,12 @@ switch ($params[0]) {
 		break;
 
 	case 'marcas':
+		$brandController = new BrandController();
+		$brandController->showBrands();	//OK
+		break;
+
+
+	case 'marca':
 		$productController = new ProductController();
 		$id_marca = $params[1];
 		$productController->filterProducts($id_marca); //trae los productos de esa marca

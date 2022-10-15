@@ -10,6 +10,7 @@ class ProductController {
     private $modelBrands;
     private $products;
     private $brands;
+    private $authHelper;
     
 
     public function __construct() {
@@ -31,9 +32,9 @@ class ProductController {
     }
 
     function goAddProduct() {
-        session_start();
-        $marcas= $this->modelBrands->getAllBrands();
-        $this->view->showFormAddProduct($marcas);
+        
+        $this->authHelper->checkLoggedIn();
+        $this->view->showFormAddProduct($this->brands);
     }
 
 
@@ -78,6 +79,7 @@ class ProductController {
     }
 
     function editProduct() {
+        $this->authHelper->checkLoggedIn();
         $productoE = new stdClass();
         $productoE->id = $_POST['id'];
         $productoE->nombreE = $_POST['nombreE'];

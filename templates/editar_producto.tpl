@@ -15,7 +15,7 @@
         <div class="col-3">
             <div class="form-group">
                 <label>Marca</label>
-                <select name="id_marcaE" class="form-control" value="{$producto->nombre_marca}">
+                <select name="id_marcaE" class="form-control">
                     {foreach from=$marcas item=$marca}
                         <option value="{$marca->id_m}">{$marca->nombre_marca}</option>
                     {/foreach}

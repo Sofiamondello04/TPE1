@@ -5,7 +5,7 @@
 <form action="editBrand" method="POST">
 <input type="hidden" value="{$id}" name="id" id="id" required>
 <div class="row">
-        <div class="col-9">
+        <div class="col-12">
             <div class="form-group">
                 <label>Nombre</label>
                
@@ -13,6 +13,9 @@
             </div>
         </div>
         
+
+
+</div>
 <input type="submit" class="btn btn-primary" value="Editar">
     
 </form>

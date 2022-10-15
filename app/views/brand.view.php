@@ -8,15 +8,15 @@ class BrandView {
         $this->smarty = new Smarty(); // inicializo Smarty
     }
 
-    function showBrandsAdm($marcas) {
+    function showBrands($marcas) {
         // asigno variables al tpl smarty
         $this->smarty->assign('count', count($marcas)); //VER SI LA USO
         $this->smarty->assign('marcas', $marcas);
         
 
         // mostrar el tpl
-        $this->smarty->display('agregar_marca.tpl');
         $this->smarty->display('tabla_marcas.tpl');
+       
     }
 
     function showFormAddBrand() {
