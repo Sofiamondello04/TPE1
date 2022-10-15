@@ -41,7 +41,7 @@ class ProductController {
 
     function filterProducts($id_marca){
         session_start();
-        $this->viewProducts->assign($this->products, $this->brands);
+        $this->viewProducts->assign($this->products, $this->brands); // es para que el header conozca 
         $productosMarca = $this->modelProducts->getProductsOfBrand($id_marca);
         $this->viewProducts-> showProductsOfBrand($productosMarca);
     }
@@ -59,6 +59,13 @@ class ProductController {
             else {
                 echo ('Faltan completar datos');
             }        
+    }
+
+    function goViewProduct($id) {
+        session_start();
+        $this->viewProducts->assign($this->products, $this->brands);
+        $producto= $this->modelProducts->getProduct($id);
+        $this->viewProducts->viewProduct($producto);
     }
    
     function deleteProduct($id) {

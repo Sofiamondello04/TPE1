@@ -34,6 +34,11 @@ switch ($params[0]) {
 		$productController->addProduct();
 		break;
 
+	case 'goViewProduct':
+		$productController = new ProductController();
+		$id = $params[1];
+		$productController->goViewProduct($id);
+		break;
 
 	case 'deleteProduct':
 		$productController = new ProductController();

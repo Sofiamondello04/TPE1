@@ -13,11 +13,18 @@ class ProductView {
         $this->smarty->assign('marca', 'Marca');
         $this->smarty->assign('precio', 'Precio');
         $this->smarty->assign('talle', 'Talle');
+        $this->smarty->assign('verDetalle', 'Ver detalle');
         $this->smarty->assign('borrar', 'Borrar');
         $this->smarty->assign('editar', 'Editar');
+        $this->smarty->assign('detalle', 'Ver');
         $this->smarty->assign('productos', $productos);
         $this->smarty->display('tabla_productos.tpl');
        
+    }
+    function viewProduct($producto) {
+        $this->smarty->assign('titulo', 'Detalle del producto');
+        $this->smarty->assign('producto', $producto);
+        $this->smarty->display('mensaje.tpl');
     }
     
     function showProductsOfBrand($productosMarca) {
@@ -25,8 +32,10 @@ class ProductView {
         $this->smarty->assign('marca', 'Marca');
         $this->smarty->assign('precio', 'Precio');
         $this->smarty->assign('talle', 'Talle');
+        $this->smarty->assign('verDetalle', 'Ver detalle');
         $this->smarty->assign('borrar', 'Borrar');
         $this->smarty->assign('editar', 'Editar');
+        $this->smarty->assign('detalle', 'Ver');
         $this->smarty->assign('productosMarca', $productosMarca);
         $this->smarty->display('productos_por_marcas.tpl');
 
