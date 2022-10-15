@@ -27,7 +27,7 @@ class ProductModel {
     }
 
     function getProduct($id) {
-        $query= $this->db->prepare("SELECT * FROM producto INNER JOIN marca ON producto.id_marca = marca.id_m WHERE id= ?");
+        $query= $this->db->prepare("SELECT * FROM producto WHERE id= ?");
         $query-> execute([$id]);
         $product= $query->fetch(PDO::FETCH_OBJ);
         return $product;
