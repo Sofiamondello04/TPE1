@@ -1,5 +1,5 @@
 <?php
-require_once './app/models/product.model.php'; //VER SI USO INNER JOIN- VALIDAR POST
+require_once './app/models/product.model.php'; 
 require_once './app/views/product.view.php';
 require_once './app/models/brand.model.php';
 require_once './app/views/brand.view.php';
@@ -46,14 +46,19 @@ class ProductController {
         $this->viewProducts-> showProductsOfBrand($productosMarca);
     }
 
-    function addProduct() { // VALIDAR TODOS LOS DATOS
+    function addProduct() { 
         $this->authHelper->checkLoggedIn();
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
             $talle = $_POST['talle'];
             $id_marca = $_POST['id_marca']; 
-            $this->modelProducts->insertProduct($nombre, $precio, $talle, $id_marca);
-            header("Location: " . BASE_URL);         
+            if (!empty($nombre && $precio && $talle && $id_marca)) {
+                $this->modelProducts->insertProduct($nombre, $precio, $talle, $id_marca);
+                header("Location: " . BASE_URL); 
+            }
+            else {
+                echo ('Faltan completar datos');
+            }        
     }
    
     function deleteProduct($id) {
@@ -64,11 +69,11 @@ class ProductController {
 
     function goEditProduct($id) {
         $this->authHelper->checkLoggedIn();
-        $producto= $this->modelProducts->getProduct($id);// obtengo de la db solo ese producto
+        $producto= $this->modelProducts->getProduct($id);
         $this->viewProducts-> showFormEdit($id, $producto, $this->brands);  
     }
 
-    function editProduct() {// VALIDAR TODOS LOS DATOS
+    function editProduct() {
         $this->authHelper->checkLoggedIn();
         $productoE = new stdClass();
         $productoE->id = $_POST['id'];
@@ -76,8 +81,13 @@ class ProductController {
         $productoE->precioE = $_POST['precioE'];
         $productoE->talleE= $_POST['talleE'];
         $productoE->id_marcaE = $_POST['id_marcaE'];
-        $this->modelProducts->updateP($productoE);
-        header("Location: " . BASE_URL);
+        if (!empty($productoE->nombreE && $productoE->precioE && $productoE->talleE && $productoE->id_marcaE)) {
+            $this->modelProducts->updateP($productoE);
+            header("Location: " . BASE_URL);
+        }
+        else {
+            echo ('Faltan completar datos');
+        }  
     }
 
 
@@ -96,8 +106,14 @@ class ProductController {
     function addBrand() {
         $this->authHelper->checkLoggedIn();
         $nombre_marca = $_POST['nombre_marca'];
-        $this->modelBrands->insertBrand($nombre_marca);     
-        header("Location: " . BASE_URL); 
+        if (!empty ($nombre_marca)) {
+            $this->modelBrands->insertBrand($nombre_marca);     
+            header("Location: " . BASE_URL);
+        }
+        else {
+            echo ('Falta completar el nombre');
+        }
+         
     }
    
     function deleteBrand($id) {
@@ -108,7 +124,7 @@ class ProductController {
 
     function goEditBrand($id) {
         $this->authHelper->checkLoggedIn();
-        $marca= $this->modelBrands->getBrand($id);// obtengo de la db solo esa marca
+        $marca= $this->modelBrands->getBrand($id);
         $this->viewBrands-> showFormEditBrand($id, $marca); 
     }
 
@@ -117,8 +133,13 @@ class ProductController {
         $marcaE = new stdClass();
         $marcaE->id = $_POST['id'];
         $marcaE->nombre_marcaE = $_POST['nombre_marcaE']; 
-        $this->modelBrands->updateB($marcaE);
-        header("Location: " . BASE_URL);
+        if (!empty ($marcaE->nombre_marcaE)) {
+            $this->modelBrands->updateB($marcaE);
+            header("Location: " . BASE_URL);
+        }
+        else {
+            echo ('Falta completar el nombre');
+        }
 
     }
        

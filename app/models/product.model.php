@@ -38,15 +38,10 @@ class ProductModel {
         $query-> execute([$id_marca]);
         $products= $query->fetchAll(PDO::FETCH_OBJ);
         return $products;
-
     }
 
     public function updateP($productoE) { 
-        echo "entre a la db";
-        $query = $this->db->prepare('UPDATE producto SET nombre= ?, talle= ?, precio= ?,  id_marca= ? WHERE id = ?'); 
-        echo "modifica datos?";
-        $query->execute([$productoE->nombreE, $productoE->talleE, $productoE->precioE,  $productoE->id_marcaE, $productoE->id]);
-        echo "realiza el execute";
-        
+        $query = $this->db->prepare('UPDATE producto SET nombre= ?, talle= ?, precio= ?,  id_marca= ? WHERE id = ?');  
+        $query->execute([$productoE->nombreE, $productoE->talleE, $productoE->precioE,  $productoE->id_marcaE, $productoE->id]);      
     }
 }
