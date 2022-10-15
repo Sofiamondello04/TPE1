@@ -10,6 +10,5 @@ clave= sofiamondello
 
 
 email= prueba@gmail.com
-clave= prueba
+clave= web
 
-RESOLVER SELECT EN AGREGAR PRODUCTO

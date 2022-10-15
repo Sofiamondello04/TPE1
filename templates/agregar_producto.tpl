@@ -8,14 +8,14 @@
         <div class="col-9">
             <div class="form-group">
             
-                <label>Nombre</label>
-                <input name="nombre" type="text" class="form-control">
+                <label>{$nombre}</label>
+                <input name="nombre" type="text" class="form-control" required>
             </div>
         </div>
         <div class="col-3">
             <div class="form-group">
-                <label>Marca</label>
-                <select name="id_marca" class="form-control">
+                <label>{$marca}</label>
+                <select name="id_marca" class="form-control" required>
                     {foreach from=$marcas item=$marca}
                         <option value="{$marca->id_m}">{$marca->nombre_marca}</option>
                     {/foreach}
@@ -25,14 +25,14 @@
     </div>
 
     <div class="form-group">
-        <label>Precio</label>
-        <input name="precio" type="number" class="form-control">
+        <label>{$precio}</label>
+        <input name="precio" type="number" class="form-control" required>
     </div>
 
     <div class="form-group">
-        <label>Talle</label>
-        <input name="talle" type="text" class="form-control">
+        <label>{$talle}</label>
+        <input name="talle" type="text" class="form-control" required>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+    <button type="submit" class="btn btn-primary mt-2">{$guardar}</button>
 </form>

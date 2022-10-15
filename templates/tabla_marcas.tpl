@@ -2,17 +2,20 @@
 <table class="table">
     <thead>
         <tr>
-            <td>Nombre</td>
-            <td>Borrar</td>
-            <td>Editar</td>
+            <td>{$nombre}</td>
+            {if isset($smarty.session.USER_EMAIL)}
+                <td>{$borrar}</td>
+                <td>{$editar}</td>
+            {/if}
         </tr>
     </thead>
     <tbody>
-        {foreach from=$marcas item=$marca}
-            
+        {foreach from=$marcas item=$marca}           
             <tr><td>{$marca->nombre_marca}</td>
-                <td><a href='deleteBrand/{$marca->id_m}' type='button' class='btn btn-danger'>Borrar</a></td>
-                <td><a href='goEditBrand/{$marca->id_m}' type='button' class='btn btn-danger'>Editar</a></td>
+            {if isset($smarty.session.USER_EMAIL)}
+                <td><a href='deleteBrand/{$marca->id_m}' type='button' class='btn btn-danger'>{$borrar}</a></td>
+                <td><a href='goEditBrand/{$marca->id_m}' type='button' class='btn btn-danger'>{$editar}</a></td>
+            {/if}
             </tr>
         {/foreach}
     </tbody>

@@ -12,6 +12,9 @@ class AuthView {
 
     function showFormLogin($error = null) {
         $this->smarty->assign("error", $error);
+        $this->smarty->assign('email', 'Email');
+        $this->smarty->assign('password', 'Password');
+        $this->smarty->assign('entrar', 'Entrar');
         $this->smarty->display('formLogin.tpl');
     }
 

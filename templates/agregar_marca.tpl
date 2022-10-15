@@ -7,14 +7,14 @@
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-                
-                <label>Nombre</label>
-                <input name="nombre_marca" type="text" class="form-control">
+                <label>{$nombre}</label>
+                <input name="nombre_marca" type="text" class="form-control" required>
             </div>
         </div>
+    </div>
     <div class="row">
         <div class="col-3">
-            <button type="submit" class="btn btn-primary mt-2">Guardar</button>
+            <button type="submit" class="btn btn-primary mt-2">{$guardar}</button>
         </div>
     </div>
 </form>

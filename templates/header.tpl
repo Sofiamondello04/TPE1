@@ -25,42 +25,48 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Productos
                     </a>
-                      <ul class="dropdown-menu">
-                      
-                      <li><a class="dropdown-item" href="productos">Mostrar productos</a></li>
-                      {if isset($smarty.session.USER_ID)}
-                      <li><a class="dropdown-item" href="goAddProduct">Agregar producto</a></li>
-                      {/if}
-                  </ul>
+                    <ul class="dropdown-menu">
+                        {foreach from=$marcas item=$marca}
+                          <li><a class="dropdown-item" href="marca/{$marca->id_m}">{$marca->nombre_marca}</a></li>
+                        {/foreach} 
 
+                        <li class="dropdown-divider">
 
-                  </li>
+                          <li><a class="dropdown-item" href="productos">Mostrar Todos</a></li>
 
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Marcas
-                      </a>
-                
-                      <ul class="dropdown-menu">
-                      {foreach from=$marcas item=$marca}
-                        <li><a class="dropdown-item" href="marca/{$marca->id_m}">{$marca->nombre_marca}</a></li>
-                      {/foreach} 
-                      {if isset($smarty.session.USER_ID)}
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="marcas">Mostrar marcas</a></li>
-                        <li><a class="dropdown-item" href="goAddBrand">Agregar marca</a></li>
-                        {/if}
-                      </ul>
-                    </li>  
-                    {if !isset($smarty.session.USER_ID)}
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="login">Login</a>
-                        </li> 
-                    {else}
-                        <li class="nav-item ml-auto">
-                            <a class="nav-link" aria-current="page" href="logout">Logout ({$smarty.session.USER_EMAIL})</a>
+                          {if isset($smarty.session.USER_EMAIL)}  
+                            <li><a class="dropdown-item" href="goAddProduct">Agregar Producto</a></li>                            
+                          {/if}
+
                         </li>
-                    {/if} 
+                    </ul>                          
+                  </li>
+                    
+                  {if isset($smarty.session.USER_EMAIL)}
+                    <li class="nav-item dropdown">
+   
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Marcas
+                        </a>
+                  
+                        <ul class="dropdown-menu">           
+                         
+                          <li><a class="dropdown-item" href="marcas">Mostrar Marcas</a></li>
+                          <li><a class="dropdown-item" href="goAddBrand">Agregar Marca</a></li>                        
+                        </ul>
+                    </li> 
+                  {/if}
+                    
+                    
+                  {if !isset($smarty.session.USER_ID)}
+                      <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="login">Login</a>
+                      </li> 
+                  {else}
+                      <li class="nav-item ml-auto">
+                          <a class="nav-link" aria-current="page" href="logout">Logout ({$smarty.session.USER_EMAIL})</a>
+                      </li>
+                  {/if} 
                     
                 </ul>
               </div>
@@ -68,5 +74,4 @@
           </nav>
     </header>
 
-    <!-- inicio main container -->
     <main class="container">
