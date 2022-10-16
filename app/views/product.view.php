@@ -24,7 +24,7 @@ class ProductView {
     function viewProduct($producto) {
         $this->smarty->assign('titulo', 'Detalle del producto');
         $this->smarty->assign('producto', $producto);
-        $this->smarty->display('mensaje.tpl');
+        $this->smarty->display('detalle_producto.tpl');
     }
     
     function showProductsOfBrand($productosMarca) {
