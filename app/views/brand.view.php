@@ -31,4 +31,13 @@ class BrandView {
         $this->smarty->assign('editar', 'Editar');
         $this->smarty->display('editar_marca.tpl');
     }
+
+    function assign($productos, $marcas) {
+        $this->smarty->assign('productos', $productos);
+        $this->smarty->assign('marcas', $marcas); 
+    }
+    
+    function error () {
+        $this->smarty->display('error.tpl');
+    }
 }

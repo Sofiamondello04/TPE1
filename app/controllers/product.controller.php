@@ -125,8 +125,19 @@ class ProductController {
    
     function deleteBrand($id) {
         $this->authHelper->checkLoggedIn();
-        $this->modelBrands->deleteBrandById($id);
-        header("Location: " . BASE_URL);
+        $this->viewBrands->assign($this->products, $this->brands);
+
+        try {
+            $this->modelBrands->deleteBrandById($id);
+            header("Location: " . BASE_URL);
+        }
+
+        catch (Exception $e) {
+            $this->viewBrands->error();
+            
+        }
+        
+        
     }
 
     function goEditBrand($id) {
